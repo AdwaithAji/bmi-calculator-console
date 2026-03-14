@@ -1,36 +1,35 @@
 #include<iostream>
-void operation(int &choice,bool &programExit);
-void menu(int &choice);
-void bmiMenu();
+
+void menu(bool *programExit);
+void bmi();
+
 int main(){
 
     bool programExit = false;
-    int choice;
 
     while(!programExit){
-        menu(choice);
-        operation(choice,programExit);
-     }
+        menu(&programExit);
+    }
      std::cout<<"You Have Exited The Program";   
      return 0;
 
 
 }
-void operation(int &choice,bool &programExit){
-
-    switch(choice){
-        case 0: programExit = true; break;
-        case 1: bmiMenu();
-    }
-}
-void menu(int &choice){
+void menu(bool *programExit){
+    int choice;
     std::cout<<"********************************"<<'\n';
     std::cout<<"**********BMI-CALCULATOR********"<<'\n';
     std::cout<<"0.Exit: "<<'\n';
     std::cout<<"1.Check Bmi: "<<'\n';
     std::cin>>choice;
+
+    switch(choice){
+        case 0: *programExit = true; break;
+        case 1: bmi(); break;
+    }
+
 }
-void bmiMenu(){
+void bmi(){
     float weight = 0;
     float height = 0;
     float bmi = 0;
